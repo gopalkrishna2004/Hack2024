@@ -29,7 +29,7 @@ Contribution Rules📚:
 - Clone it on your local machine
 
 ```terminal
-git clone https://github.com/fineanmol/Hacktoberfest2024.git
+git clone https://github.com/gopalkrishna2004/Hack2024
 ```
 
 - Navigate to the project directory.
