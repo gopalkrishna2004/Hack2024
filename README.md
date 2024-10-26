@@ -14,36 +14,43 @@ To participate:
     Submit 4 pull requests (PRs) to any public repository on GitHub, including this one, during October.
     Be sure to follow Hacktoberfest's rules and guidelines to ensure your PRs count toward the challenge!
 
-🛠 How to Contribute
+Contribution Rules📚:
 
-Contributions can include anything from bug fixes, new features, documentation improvements, code refactoring, and much more! Here’s how to get started:
+    You are allowed to make pull requests that break the rules. We just merge it ;)
+    Do NOT add any build steps, e.g., npm install (we want to keep this a simple static site)
+    Do NOT remove other content.
+    Styling/code can be pretty, ugly, or stupid, big or small, as long as it works
 
-    Fork this repository: This creates a personal copy of this repository on your GitHub account.
-    Clone the repository: Download the forked repository to your local machine.
+    Try to keep pull requests small to minimize merge conflicts
 
-    bash
+Getting Started 🤩🤗:
+
+    Fork this repo (button on top)
+    Clone it on your local machine
 
 git clone https://github.com/gopalkrishna2004/Hack2024
 
-Create a branch: Work on your feature or bug fix in a new branch.
+    Navigate to the project directory.
 
-bash
+cd Hacktoberfest2024
 
-git checkout -b feature-name
+    Create a new branch
 
-Make your changes: Commit your changes with a descriptive message.
+git checkout -b my-new-branch
 
-bash
+git add .
 
-git commit -m "Add feature X"
+    Commit your changes.
 
-Push your changes: Upload your changes to your forked repository.
+git commit -m "Relevant message"
 
-bash
+    Then push
 
-    git push origin feature-name
+git push origin my-new-branch
 
-    Submit a pull request: Head over to the original repository on GitHub and open a pull request.
+    Create a new pull request from your forked repository
+
+
 
 📋 Rules and Guidelines
 
