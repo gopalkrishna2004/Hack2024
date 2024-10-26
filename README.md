@@ -32,12 +32,6 @@ Contribution Rules📚:
 git clone https://github.com/gopalkrishna2004/Hack2024
 ```
 
-- Navigate to the project directory.
-
-```terminal
-cd Hacktoberfest2024
-```
-
 - Create a new branch
 
 ```markdown
