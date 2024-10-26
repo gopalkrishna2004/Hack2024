@@ -23,33 +23,48 @@ Contribution Rules📚:
 
     Try to keep pull requests small to minimize merge conflicts
 
-Getting Started 🤩🤗:
+## Getting Started 🤩🤗:
 
-    Fork this repo (button on top)
-    Clone it on your local machine
+- Fork this repo (button on top)
+- Clone it on your local machine
 
-git clone https://github.com/gopalkrishna2004/Hack2024
+```terminal
+git clone https://github.com/fineanmol/Hacktoberfest2024.git
+```
 
-    Navigate to the project directory.
+- Navigate to the project directory.
 
+```terminal
 cd Hacktoberfest2024
+```
 
-    Create a new branch
+- Create a new branch
 
+```markdown
 git checkout -b my-new-branch
+```
 
+<!--- - Add your name to `contributors/contributorsList.js`. -->
+
+```markdown
 git add .
+```
 
-    Commit your changes.
+- Commit your changes.
 
+```markdown
 git commit -m "Relevant message"
+```
 
-    Then push
+- Then push
 
+```markdown
 git push origin my-new-branch
+```
 
-    Create a new pull request from your forked repository
+- Create a new pull request from your forked repository
 
+<br>
 
 
 📋 Rules and Guidelines
