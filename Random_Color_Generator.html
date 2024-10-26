@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .color-display {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 1.2rem;
+        }
+
+        .color-values {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .color-value {
+            padding: 0.5rem;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .copied {
+            animation: fadeIn 0.3s ease;
+            color: #4CAF50;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Color Generator</h1>
+        <div class="color-display" id="colorDisplay">
+            Generated Color
+        </div>
+        <div class="color-values">
+            <div class="color-value" id="hexValue" onclick="copyToClipboard(this)">
+                #FFFFFF
+            </div>
+            <div class="color-value" id="rgbValue" onclick="copyToClipboard(this)">
+                rgb(255, 255, 255)
+            </div>
+        </div>
+        <button onclick="generateColor()">Generate New Color</button>
+    </div>
+
+    <script>
+        function generateColor() {
+            // Generate random RGB values
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            
+            // Convert to hex
+            const hex = '#' + [r, g, b].map(x => {
+                const hex = x.toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            }).join('').toUpperCase();
+            
+            // Update display
+            document.body.style.backgroundColor = hex;
+            document.getElementById('colorDisplay').style.backgroundColor = hex;
+            document.getElementById('hexValue').textContent = hex;
+            document.getElementById('rgbValue').textContent = `rgb(${r}, ${g}, ${b})`;
+            
+            // Update text color based on brightness
+            const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+            const textColor = brightness > 128 ? '#000000' : '#FFFFFF';
+            document.getElementById('colorDisplay').style.color = textColor;
+        }
+
+        function copyToClipboard(element) {
+            // Copy the text content
+            navigator.clipboard.writeText(element.textContent.trim());
+            
+            // Show copied message
+            const copied = document.createElement('div');
+            copied.className = 'copied';
+            copied.textContent = 'Copied to clipboard!';
+            
+            // Remove existing copied messages
+            const existingCopied = document.getElementsByClassName('copied');
+            Array.from(existingCopied).forEach(el => el.remove());
+            
+            element.appendChild(copied);
+            setTimeout(() => copied.remove(), 2000);
+        }
+
+        // Generate initial color
+        generateColor();
+    </script>
+</body>
+</html>
