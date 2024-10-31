@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Rating</title>
+    <script src="6.js"></script>
+    <style>
+        /* Gradient pastel background */
+        body {
+            background: linear-gradient(135deg, #f781d6, #a6c1ee);
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Button to open the rating pop-up */
+        .rate-btn {
+            padding: 15px 30px;
+            background-color: #ffb6b9; /* Soft pink */
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .rate-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Pop-up menu */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 40px;
+            width: 320px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Gradient background for pop-up */
+        .popup h2 {
+            background: -webkit-linear-gradient(45deg, #ffb6b9, #fae3d9);
+            /* -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;*/
+            margin-bottom: 20px; 
+        }
+
+        /* Stars */
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .stars input {
+            display: none;
+        }
+
+        .stars label {
+            font-size: 35px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .stars input:checked ~ label,
+        .stars label:hover,
+        .stars label:hover ~ label {
+            color: gold;
+        }
+
+        /* Comment section */
+        .comment-section {
+            margin-top: 15px;
+        }
+
+        .comment-section textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            outline: none;
+            resize: none;
+            transition: border-color 0.3s;
+        }
+
+        .comment-section textarea:focus {
+            border-color: #ffb6b9; /* Soft pink */
+        }
+
+        /* Close button */
+        .close-btn {
+            padding: 12px 25px;
+            background-color: #6d83f2; /* Soft blue */
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+        }
+
+        .close-btn:hover {
+            background-color: #5067e8;
+            transform: scale(1.05);
+        }
+
+        .popup.active {
+            display: block;
+            animation: popupFadeIn 0.3s ease-out forwards;
+        }
+
+
+
+
+@keyframes popupFadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Dark overlay for the background */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+
+.overlay.active {
+    display: block;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Button to trigger the pop-up -->
+<button class="rate-btn" onclick="openPopup()">Rate Restaurant</button>
+
+<!-- Pop-up for rating -->
+<div class="popup" id="ratingPopup">
+<h2>Rate this Restaurant</h2>
+
+<!-- Star rating system -->
+<div class="stars">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5">&#9733;</label>
+
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4">&#9733;</label>
+
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3">&#9733;</label>
+
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2">&#9733;</label>
+
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1">&#9733;</label>
+</div>
+
+<!-- Optional Comment Section -->
+<div class="comment-section">
+    <textarea id="comment" placeholder="Leave a comment (optional)..."></textarea>
+</div>
+
+<!-- Submit Button -->
+<button class="close-btn" onclick="submitRating()">Submit Rating</button>
+</div>
+
+<!-- Dark overlay for pop-up effect -->
+<div class="overlay" id="overlay"></div>
+
+<script>
+// Open the pop-up
+function openPopup() {
+    document.getElementById('ratingPopup').classList.add('active');
+    document.getElementById('overlay').classList.add('active');
+}
+
+
+
+// Close the pop-up
+function closePopup() {
+    document.getElementById('ratingPopup').classList.remove('active');
+    document.getElementById('overlay').classList.remove('active');
+}
+
+// Close popup when clicking outside
+document.getElementById('overlay').addEventListener('click', closePopup);
+</script>
+
+
+
+
+
+</body>
+</html>
